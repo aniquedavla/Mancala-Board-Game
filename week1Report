@@ -1,0 +1,41 @@
+Report Week 1
+
+4/3 ~  4/8 
+ Team Name: DOTIO
+ Team leader of the week: Anique
+ Team members: Anique Davla, Brian Lai
+Summary
+
+We took one day to go over project requirements and deliverables individually. 
+Then we realized we need a way to be able to collaborate remotely and learned and practiced GIT and decided to have Github as remote repo. 
+We were able to meet in person and discuss the project, and use cases to implement. 
+We tried different implementation of internal data structure of the Model to hold and update stone values in each pit or Mancula, first we started with all ArrayList. 
+We rulled out ArrayList as it was inefficient to traverse between player A and B pits or Maculas in a loop, and more importantly the opposite mapping if the last stone is on an empty pit. 
+We turned to LinkedList with node of pit implementation to update stone data. 
+It seemed redundant so we tried a Node of Player one’s pit, and another node of player two’s pits and Maculas respectively. 
+Our problem with finding the opposite pit of an empty one still remained in the LinkedList so we realized we could use a 2D array to model all pits and macula with 2 null slots to balance iteration from last pit of player A and its Macula to Player B’s pits.
+We made a basic UML diagram of interactive between a GUI Board made up of ICONs and label of pits and stones. 
+We coded up a basic prototype for using hard coded data structure in the model to return a 2D of stones when a certain pit was selected. We’d ideally use that 2D array to repaint view after the end of a turn. 
+We plan on expanding our prototype to work with a basic GUI board and implement simple MVC with at least one Listeners.
+
+Individual Weekly Report
+Name:  Anique Davla.
+
+M: 4/3 - 0
+T: 4/4 - 1.5 hrs | Understood the Mancala game, and project requirements, and deliverables.
+W: 4/5 - 1 hrs | Set up git and GitHub for project collaboration. Watched videos and tested git branches and commits.
+R: 4/6 - 1.5 hrs |  Met with the group to discuss the underlying data structures,and and basic GUI and model design.
+F: 4/7 - 2.5 hrs | Met with the group to go through ArrayList, LinkedList of ArrayList and 2D Array implementation of model. Drew a basic UML diagram and finalized on the 2D Array implementation. Made a basic prototype.
+A: 4/8 - 20 min | individual weekly report, and summary and combine weekly report.
+
+Individual Weekly Report
+
+Name: Brian Lai 
+
+M: 4/3: 0 hrs 
+T: 4/4: 1.5 hrs | Read through project, familiarized ourselves with GitHub 
+W: 4/5: 1 hr | Continued to learn GitHub to benefit workflow 
+R: 4/6: 1.5 hrs | Finished learning about GitHub, started to discuss data structures to use 
+F: 4/7: 2 hrs | Continued to discuss data structures to use, mostly settled on 2D arrays and arrays 
+A: 4/8: 15 minutes | Finalized weekly report
+
