@@ -14,11 +14,14 @@ Mancala game for CS151 project.
 > git commit -m “This is the work I did!” (describe your changes)<br/>
 > git push origin branch_i_am_on (upload it to the server)<br/>
 
-*…once we finialize on your changes, push to master…*
-> git status <- see the files that you made changes to; file name should be highlighted in red <br/>
-> git add <file name that you made changes to> (don't stage all your files to commit..add only the file you made changes to)</br>
+*…once we finialize on your changes, PUSH to origin MASTER…*
+> Commit and push your branch's changes <br/>
+> git checkout master
+> git pull (so u have the lastest master)
+> git merge <brachName> ( branchName that you want to merge to master)
+> git add .
 > git commit -m “This is the work I did!” <- describe your changes<br/>
-> git push origin master <- upload it to master branch<br/>
+> git push <- upload it to master branch<br/>
 
 *…if you wanna update from master; usually after you merge something to master…*
 > git pull origin master <- download changes in master<br/>
