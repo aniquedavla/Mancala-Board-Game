@@ -1,0 +1,9 @@
+Individual Weekly Report
+Name: Anique Davla
+
+M: 4/10 || 0 hours
+T: 4/11 || 0 hours
+W: 4/12	|| 1.5 hours, met in person - revisited underlying data structure, an array of Pit ( that have references to Player and if it is a Mancala. We also decided to make Mancala extend Pit to have a strategy pattern. 
+R: 4/13	|| 2 hours, decided remotely to have make View and Controller be one entity and Board class be model of algorithms and all the logic. I wrote a few algorithms in board to distribute stones, update the pits and mancalas with the right number of stones after distribute.  
+F: 4/14	|| 3 hours, Worked on Board View to interact with basic model algorithms and it refersed the 2 drawn pits’ stones. 
+A: 4/15 || 30 minutes, GIT merge conflicts, and weekly report.
