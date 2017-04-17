@@ -85,3 +85,21 @@ Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.
 !ENTRY org.eclipse.m2e.logback.appender 4 0 2017-04-09 16:48:21.180
 !MESSAGE fatal: Could not switch to '/Library/Developer/CommandLineTools/usr/etc/': No such file or directory
 
+
+!ENTRY org.eclipse.egit.ui 4 0 2017-04-16 20:07:28.215
+!MESSAGE Failed to refresh projects from index changes
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Errors occurred while refreshing resources with the local file system.
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.refreshResource(FileSystemResourceManager.java:977)
+	at org.eclipse.core.internal.localstore.FileSystemResourceManager.refresh(FileSystemResourceManager.java:960)
+	at org.eclipse.core.internal.resources.Resource.refreshLocal(Resource.java:1594)
+	at org.eclipse.egit.ui.Activator$ResourceRefreshJob$1.run(Activator.java:521)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2240)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2267)
+	at org.eclipse.egit.ui.Activator$ResourceRefreshJob.run(Activator.java:506)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Contains: The project description file (.project) for 'ExampleMancala' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
+!SUBENTRY 1 org.eclipse.core.resources 4 271 2017-04-16 20:07:28.220
+!MESSAGE Errors occurred while refreshing resources with the local file system.
+!SUBENTRY 2 org.eclipse.core.resources 4 567 2017-04-16 20:07:28.220
+!MESSAGE The project description file (.project) for 'ExampleMancala' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
