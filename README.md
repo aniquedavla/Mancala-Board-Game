@@ -18,8 +18,8 @@ Mancala game for CS151 project.
 > Commit and push your branch's changes <br/>
 > git checkout master<br>
 > git pull (so u have the lastest master)<br>
-> git merge <brachName> ( branchName that you want to merge to master)
-> git add .
+> git merge <brachName> ( branchName that you want to merge to master)<br>
+> git add . <br>
 > git commit -m “This is the work I did!” <br>
 > git push <br>
 
