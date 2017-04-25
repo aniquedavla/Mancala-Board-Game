@@ -1,0 +1,9 @@
+4/18 ~ 4/22
+Name:  Brian Lai
+
+M: 4/3 | 0
+T: 4/4 | 0
+W: 4/5 | 1.5 | continued implementing parts of the View component
+R: 4/6 | 1 | finished up work from yesterday
+F: 4/7 | 2 | started to work on model component, specifically Board, weekly report
+A: 4/8 |
