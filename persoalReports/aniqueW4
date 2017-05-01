@@ -1,0 +1,10 @@
+Individual Weekly Report
+
+Name: Anique Davla
+
+M: 4/24 | 0
+T: 4/25 | 1.5 | finish Baisc GUI for one board congiguration and checked it with Brian,discussed desing patterns which are effetion for configurable UI-decided a Strategy approach.
+W: 4/26 | 1.5 | implemented parts of the DataModel, Model part of MVC. Finally got a couply use cases working in the Data model that update the View. Proper Observer working. 
+R: 4/27 | 3 | fixed a bug with the distribute stones algorithm for different use cases, it pariataily distributed stones. 
+F: 4/28 | 1 | added some proper Listners and to Controller and fixed how the controller called the model, because the way we were doing it before did follow true MVC in the controller section. 
+A: 4/29 | .5| weekly report and planeed to finisht the board by mid week next week.	L
