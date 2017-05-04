@@ -1,0 +1,42 @@
+4/10 ~ 4/15
+Team Name: DotIO
+Team leader of the week: Brian Lai
+Team members: Brian Lai, Anique Davla
+
+Summary:
+We met up on Wednesday to discuss original design structure/pattern.
+We ended up changing some aspects of the original plan, choosing an Array to implement the pits instead of 2DArrays.
+We delved deeper into the design structure, drawing out a rough sketch of UML diagram.
+Possible classes to think about include Board, BoardFormat, Pits, BoardView...
+We settled on the idea of having View and Controller be in the same class (BoardView).
+We have not yet settled on the full algorithm of the stone movement, but started to put thoughts from paper into code.
+Finished Pit, Player, BoardFormat class, thinking about adding MancalaPit as a subclass of Pit.
+We discussed things to understand individually before the next time we met up to combine our ideas,
+such as going over the rough UML diagram and what each class should do and contain.
+We encountered problems with Git and ended up spending a good amount of time working around it.
+
+
+
+
+
+Individual Reports:
+
+Name: Brian Lai
+M: 4/10 | 0 hrs |
+T: 4/11 | 0 hrs |
+W: 4/12 | 1.5 hrs | We met up to discuss data structures, and ended up settling on arrays for the pits and mancalas
+R: 4/13 | 2 hrs | Started to get deeper into design patterns. Decided to make View and Controller one class, discussed algorithms for stone movement
+F: 4/14 | 2.5 hrs | I started to write code for Pit class, BoardFormat, Player
+A: 4/15 | 0.5 hrs | Weekly report, GitHub issues
+
+Individual Weekly Report
+Name: Anique Davla
+
+M: 4/10 || 0 hours
+T: 4/11 || 0 hours
+W: 4/12	|| 1.5 hours, met in person - revisited underlying data structure, an array of Pit ( that have references to Player and if it is a Mancala. We also decided to make Mancala extend Pit to have a strategy pattern. 
+R: 4/13	|| 2 hours, decided remotely to have make View and Controller be one entity and Board class be model of algorithms and all the logic. I wrote a few algorithms in board to distribute stones, update the pits and mancalas with the right number of stones after distribute.  
+F: 4/14	|| 3 hours, Worked on Board View to interact with basic model algorithms and it refersed the 2 drawn pits’ stones. 
+A: 4/15 || 30 minutes, GIT merge conflicts, and weekly report.
+
+
