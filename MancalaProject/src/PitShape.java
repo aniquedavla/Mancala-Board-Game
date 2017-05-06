@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.geom.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class PitShape {
 	private int x;
@@ -10,6 +11,14 @@ public class PitShape {
 	private Shape shape;
 	final int MARBLE_SIZE = 20;
 
+	
+	/**
+	 * Constructor for PitShape class
+	 * @param x the x-coordinate of the pit
+	 * @param y the y-coordinate of the pit
+	 * @param width the width of the pit
+	 * @param height the height of the pit
+	 */
 	public PitShape(int x, int y, int width, int height) {
 		this.x = x;
 		this.y = y;
@@ -17,33 +26,132 @@ public class PitShape {
 		this.height = height;
 	}
 
-//	public void fill(Graphics2D g) {
-//		g.setColor(Color.BLACK);
-//		g.setStroke(new BasicStroke(10));
-//		g.draw(shape);
-//		g.setColor(Color.ORANGE);
-//		g.setStroke(new BasicStroke(3));
-//
-//		int counter = 1;
-//		double radius = Math.min(this.height, this.width) / 4.0;
-//
-//		if (numberOfMarbles > 0) {
-//			g.setColor(Color.ORANGE);
-//			Font font = new Font("Futura", Font.BOLD, 20);
-//			g.setFont(font);
-//			g.drawString(numberOfMarbles + "", x + 30, y + 20);
-//		}
-//
-//		for (int i = 0; i < numberOfMarbles; i++) {
-//			double x;
-//			double y;
-//			if (counter % 2 == 1) {
-//				x = this.x + 30;
-//				y = (this.y + 5);
-//			}
-//			else {
-//				x = this.x + 
-//			}
-//		}
-//	}
+	/**
+	 * Fills in the pit and draws the marbles in them
+	 * @param g graphics
+	 */
+	public void fill(Graphics2D g) {
+		g.setColor(Color.BLACK);
+		g.setStroke(new BasicStroke(10));
+		g.draw(shape);
+		g.setStroke(new BasicStroke(3));
+
+		//indicates the number of stones in a pit
+		if (numberOfMarbles > 0) {
+			g.setColor(Color.WHITE);
+			Font font = new Font("Futura", Font.BOLD, 20);
+			g.setFont(font);
+			g.drawString(numberOfMarbles + "", x + 30, y + 20);
+		}
+
+		//determines placement of the stones in overlapping fashion
+		int counter = 1;
+		for (int i = 0; i < numberOfMarbles; i++) {
+			double x;
+			double y;
+			if (counter % 2 == 1) {
+				x = this.x + 30;
+				y = (this.y + 5) + 8 * counter / 1.5;
+			} else {
+				x = this.x + 15;
+				y = (this.y + 5) + 8 * counter / 1.5;
+			}
+
+			//draws the stones
+			Ellipse2D.Double marble = new Ellipse2D.Double(x, y + 25, MARBLE_SIZE, MARBLE_SIZE - 5);
+			g.setColor(Color.ORANGE);
+			g.fill(marble);
+			g.setColor(Color.BLUE);
+			g.draw(marble);
+			counter++;
+		}
+	}
+
+	/**
+	 * Gets amount of marbles in the pit
+	 * @return amount of marbles in the pit
+	 */
+	public int getMarbles() {
+		return numberOfMarbles;
+	}
+
+	/**
+	 * Sets the amount of marbles in a pit to a specified amount
+	 * @param amount the number of marbles to be set to
+	 */
+	public void setMarbles(int amount) {
+		numberOfMarbles = amount;
+	}
+
+	/**
+	 * Sets the shape of a pit to a specified shape
+	 * @param s the shape to set the pit to
+	 */
+	public void setShape(Shape s) {
+		shape = s;
+	}
+
+	/**
+	 * Gets the shape of the pit
+	 * @return the pit's shape
+	 */
+	public Shape getShape() {
+		return shape;
+	}
+
+	/**
+	 * Gets the X coordinate of the pit
+	 * @return the X coordinate of the pit
+	 */
+	public int getX() {
+		return x;
+	}
+
+	/**
+	 * Gets the Y coordinate of the pit
+	 * @return the Y coordinate of the pit
+	 */
+	public int getY() {
+		return y;
+	}
+	
+	/**
+	 * Gets the width of the pit
+	 * @return the width of the pit
+	 */
+	public int getWidth() {
+		return width;
+	}
+
+	/**
+	 * Gets the height of the pit
+	 * @return the height of the pit
+	 */
+	public int getHeight() {
+		return height;
+	}
+	
+	/**
+	 * Checks if the pit contains a specified point
+	 * @param p the point to be checked
+	 * @return true if point is in pit, false otherwise
+	 */
+	public boolean contains(Point2D p) {
+		if (shape.contains(p)) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	/**
+	 * Draws the pit with stones
+	 * @param g graphics
+	 */
+	public void draw (Graphics2D g)
+	{
+		g.draw(shape);
+		fill(g);
+	}
 }
