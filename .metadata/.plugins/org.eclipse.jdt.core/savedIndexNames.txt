@@ -4,14 +4,13 @@ INDEX VERSION 1.129+/Users/brianlai/Desktop/School/CS151/Mancala-Board-Game/.met
 3302703152.index
 1819685514.index
 680827947.index
+3334288320.index
 2762063732.index
 3266567714.index
-3334288320.index
-1384487945.index
 2255771374.index
+1384487945.index
 3321539481.index
 3720681883.index
-3283926637.index
 1888666045.index
 1271342938.index
 3712507179.index
