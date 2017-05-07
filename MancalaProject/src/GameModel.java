@@ -33,7 +33,7 @@ public class GameModel {
     public static final int mancalaP2 = 13;
 
 
-    private boolean lastStoneInMancala;
+    private boolean lastMarbleInMancala;
     private boolean undoable;
     private ArrayList<ChangeListener> listeners;
 
@@ -48,7 +48,7 @@ public class GameModel {
         undosP2 = 0;
         pits = new int[totalPits];
         pastPits = new int[totalPits];
-        lastStoneInMancala = false;
+        lastMarbleInMancala = false;
         undoable = false;
         listeners = new ArrayList<ChangeListener>();
 
@@ -164,14 +164,14 @@ public class GameModel {
     }
 
     /**
-     * setStones sets the pits to the number of
-     * @param stones are the number of stones
+     * setMarbles sets the pits to the number of
+     * @param marbles are the number of marbles
      */
-    public void setStones(int stones) {
+    public void setMarbles(int marbles) {
 
         for(int i = 0; i < pits.length; i++) {
             if (!isMancala(i))
-                pits[i] = stones;
+                pits[i] = marbles;
         }
 
         this.notifyListeners();
@@ -211,10 +211,10 @@ public class GameModel {
     }
 
     /**
-     *moveLastStonesTo Mancala moves the remining stone to mancala respectively
+     *moveLastMarblesToMancala moves the remining marble to mancala respectively
      */
-    private void moveLastStonesToMancala() {
-        // adds up stones from all pits and places them in corresponding mancalas
+    private void moveLastMarblesToMancala() {
+        // adds up marbles from all pits and places them in corresponding mancalas
         for (int i = 0; i < totalPits; ++i)
 
             //check if pit is not a player's mancala
@@ -233,39 +233,39 @@ public class GameModel {
     }
 
     /**
-     * checkLastStoneProperties performs properties of if the last stone falls on
+     * checkLastMarbleProperties performs properties of if the last marble falls on
      * the current players' mancal or empty pit
      * @param currentPit
      */
-    public void checkLastStoneProperties(int currentPit) {
+    public void checkLastMarbleProperties(int currentPit) {
         // where is the last pit where a piece was placed
 
         // own mancala
         if (playerOfPit(currentPit) == currentPlayer && isMancala(currentPit))
         {
             //free turn
-            lastStoneInMancala = true;
+            lastMarbleInMancala = true;
         }
         // empty pit on your side
         else if (playerOfPit(currentPit) == currentPlayer && pits[currentPit] == 1 && pits[oppositePit(currentPit)] > 0)
         {
-            // collects stolen stones + stone
-            int stolenStones = pits[currentPit] + pits[oppositePit(currentPit)];
+            // collects stolen marbles + marble
+            int stolenMarbles = pits[currentPit] + pits[oppositePit(currentPit)];
             pits[currentPit] = pits[oppositePit(currentPit)] = 0;
             if (currentPlayer == Player.ONE)
             {
-                pits[mancalaP1] += stolenStones;
+                pits[mancalaP1] += stolenMarbles;
             }
             else {
-                pits[mancalaP2] += stolenStones;
+                pits[mancalaP2] += stolenMarbles;
             }
             // change turns
-            lastStoneInMancala = false;
+            lastMarbleInMancala = false;
             changePlayer();
         }
         else {
             // change turns
-            lastStoneInMancala = false;
+            lastMarbleInMancala = false;
             changePlayer();
         }
     }
@@ -309,11 +309,11 @@ public class GameModel {
         else
             undosP1 = 0;
 
-        int stones = pits[pitIndex];
+        int marbles = pits[pitIndex];
         pits[pitIndex] = 0;
 
         int currentPit = pitIndex;
-        while (stones > 0)
+        while (marbles > 0)
         {
             currentPit++;
             // currentPit returns to first pit after going around
@@ -324,18 +324,18 @@ public class GameModel {
                 continue;
             }
 
-            // Place stone in pit
+            // Place marbles in pit
             pits[currentPit]= pits[currentPit] + 1;
-            stones--;
+            marbles--;
         }
 
-        //game properties of the last stone
-        checkLastStoneProperties(currentPit);
+        //game properties of the last marble
+        checkLastMarbleProperties(currentPit);
 
         //is pits are empty, meaning not done.
         if (arePitsEmpty())
         {
-            moveLastStonesToMancala();
+            moveLastMarblesToMancala();
             gameState = STATE.COMPLETE;
         }
         // Notify all Listeners
@@ -356,12 +356,12 @@ public class GameModel {
 
             case ONE:
             {
-                if (lastStoneInMancala && undosP1 < totalUndos )
+                if (lastMarbleInMancala && undosP1 < totalUndos )
                 {
                     undosP1++;
                     flag = true;
                 }
-                else if (!lastStoneInMancala && undosP2 < totalUndos)
+                else if (!lastMarbleInMancala && undosP2 < totalUndos)
                 {
                     undosP2++;
                     currentPlayer = Player.TWO;
@@ -371,12 +371,12 @@ public class GameModel {
             }
             case TWO:
             {
-                if (lastStoneInMancala && undosP1 < totalUndos)
+                if (lastMarbleInMancala && undosP1 < totalUndos)
                 {
                     undosP2++;
                     flag = true;
                 }
-                else if (!lastStoneInMancala && undosP1 < totalUndos)
+                else if (!lastMarbleInMancala && undosP1 < totalUndos)
                 {
                     undosP1++;
                     flag = true;
