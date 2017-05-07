@@ -4,6 +4,9 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
 
+/**
+ * @author Anique Davla, Brian Lai
+ */
 public class GameView extends JComponent implements ChangeListener {
 
 	private ArrayList<Shape> shapes;
@@ -38,7 +41,7 @@ public class GameView extends JComponent implements ChangeListener {
 	
 	public void updateGame() {
 		pits = new ArrayList<PitShape>();
-		shapes = new ArrayList<Shape>();
+//		shapes = new ArrayList<Shape>();
 		
 		final int pitHeight = 150;
         final int pitWidth = 80; 
@@ -125,15 +128,17 @@ public class GameView extends JComponent implements ChangeListener {
 
 		Graphics2D g2 = (Graphics2D) g;
 
-		for(Shape s: shapes)
-			g2.draw(s);
-
+//		for(Shape s: shapes) {
+//			g2.draw(s);
+//		}
 		for(PitShape p: pits) {
 			p.fill(g2);
 		}
 
 		//player information
 		String turnInfo = "";
+		String finalScore = "";
+
 		if (gameModel.getGameState() == GameModel.STATE.INCOMPLETE)
 		{
 			if (gameModel.getCurrentPlayer() == GameModel.Player.ONE) {
@@ -143,13 +148,15 @@ public class GameView extends JComponent implements ChangeListener {
 				turnInfo = "Player Two's Turn";
 			}
 		}
-		else if (gameModel.getGameState() == GameModel.STATE.COMPLETE)
-		{
-			turnInfo = "Final Score: " + "Player One's " + gameModel.playerScoreCard(GameModel.Player.ONE) + " vs " + "Player 2 " + gameModel.playerScoreCard(GameModel.Player.TWO);
+		else if (gameModel.getGameState() == GameModel.STATE.COMPLETE) {
+
+			turnInfo = "Final Score: ";
+			finalScore = "Player One's " + gameModel.playerScoreCard(GameModel.Player.ONE) + " vs " + "Player Two's " + gameModel.playerScoreCard(GameModel.Player.TWO);
 		}
 		g.setColor(Color.BLACK);//Set g color to black for font
 
-		g2.drawString(turnInfo, (getWidth()/2)-80,getHeight()/2); //print turn information
+		g2.drawString(turnInfo, (getWidth()/2)-200,getHeight()/2); //print turn information
+		g2.drawString(finalScore,(getWidth()/2)-200,getHeight()/2+20);
 	}
 
 	public void setVisibility(boolean visibility) {

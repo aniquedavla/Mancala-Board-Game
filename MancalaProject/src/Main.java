@@ -1,12 +1,13 @@
-import java.awt.BorderLayout;
-import java.awt.Color;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
 /**
- * Builds Frame that contains PanelComponent, Selection Board Panel, Undo button Panel 
+ *
+ * Builds Frame that contains GameView, Selection Board Panel, Undo button Panel
+ * @author Anique Davla, Brain Lai
  *
  */
 public class Main extends JFrame{
@@ -17,17 +18,18 @@ public class Main extends JFrame{
       final GameModel gameModel;
 
     /**
-     * Creates a new MancalaMain
+     * Makes a new Board with the appropiate rectangle and board formats
      */
       
   public Main() {
+        super();
         BoardVisible = true; // Displays Selections Board Panel
 
         gameModel = new GameModel();
         gameView = new GameView(gameModel, new HighTechBoardFormat());
 
         final JPanel lowerPanel = new JPanel();
-        JButton undo = new JButton("undo");
+        JButton undo = new JButton("Undo");
         undo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -36,17 +38,34 @@ public class Main extends JFrame{
         });
 
         final JPanel selectionBoardPanel = new JPanel();
+        JLabel mainLabel = new JLabel("Select board style and number of stones");
 
-        JLabel label = new JLabel("Select style and number of stones");
-        selectionBoardPanel.add(label);
+        final JPanel formatPanel = new JPanel();
+        JLabel selectFormat = new JLabel("Select Board Format:");
+        JLabel selectPits   = new JLabel("Select number of pits:");
 
         //strategy pattern comboboxes
 
         JButton submit = new JButton("Submit");
-        String[] comboint = {"select", "3", "4"};
-        String[] comboformat = {"select", "High Tech Board", "Oak Board"};
+        String[] comboint = {"Select marbles", "3", "4"};
+        String[] comboformat = {"Select", "High Tech Board", "Oak Board"};
         final JComboBox combo = new JComboBox(comboint);
         final JComboBox comboselectformat = new JComboBox(comboformat);
+
+        selectionBoardPanel.add(mainLabel);
+//        formatPanel.add(selectFormat);
+//        selectionBoardPanel.add(selectFormat);
+        selectionBoardPanel.add(comboselectformat);
+//        selectionBoardPanel.add(selectPits);
+        selectionBoardPanel.add(combo);
+        selectionBoardPanel.add(submit);
+        lowerPanel.add(undo);
+
+        super.add(selectionBoardPanel, BorderLayout.NORTH);
+//        add(formatPanel,BorderLayout.NORTH);
+        super.add(gameView, BorderLayout.CENTER);
+        super.add(lowerPanel, BorderLayout.SOUTH);
+        setButtonVisible(false, lowerPanel);
 
         combo.addActionListener(new ActionListener() {
             @Override
@@ -105,16 +124,6 @@ public class Main extends JFrame{
                 }
             }
         });
-        
-        selectionBoardPanel.add(comboselectformat);
-        selectionBoardPanel.add(combo);
-        selectionBoardPanel.add(submit);
-        lowerPanel.add(undo);
-        
-        add(selectionBoardPanel, BorderLayout.NORTH);
-        add(gameView, BorderLayout.CENTER);
-        add(lowerPanel, BorderLayout.SOUTH);
-        setButtonVisible(false, lowerPanel);
   
     }
     
@@ -123,15 +132,13 @@ public class Main extends JFrame{
      * Creates MancalaMain which starts the game.
      * @param args the arguments
      */
-    public static void main(String[] args)
-    {
-        Main main = new Main();  
-        
+    public static void main(String[] args) {
+        Main main = new Main();
+        main.setVisible(true);
         main.setSize(800, 550);
         main.setTitle("Mancala");
         main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        main.setVisible(true);
-        
+
     }
     
      /**
