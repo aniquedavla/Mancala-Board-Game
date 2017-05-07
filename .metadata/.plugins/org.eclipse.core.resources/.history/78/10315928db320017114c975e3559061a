@@ -127,7 +127,7 @@ public class Main extends JFrame{
     {
         Main main = new Main();  
         
-        main.setSize(800, 550);
+        main.setSize(1000, 750);
         main.setTitle("Mancala");
         main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         main.setVisible(true);

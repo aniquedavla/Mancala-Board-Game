@@ -234,7 +234,7 @@ public class GameModel {
 
     /**
      * checkLastMarbleProperties performs properties of if the last marble falls on
-     * the current players' mancala or empty pit
+     * the current players' mancal or empty pit
      * @param currentPit
      */
     public void checkLastMarbleProperties(int currentPit) {

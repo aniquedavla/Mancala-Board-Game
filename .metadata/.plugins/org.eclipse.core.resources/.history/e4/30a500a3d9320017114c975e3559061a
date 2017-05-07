@@ -12,7 +12,7 @@ import javax.swing.*;
 public class Main extends JFrame{
     
      
-      private GameView gameView;
+      private GameView mancalaComp;
       private boolean BoardVisible;
       final GameModel gameModel;
 
@@ -24,14 +24,14 @@ public class Main extends JFrame{
         BoardVisible = true; // Displays Selections Board Panel
 
         gameModel = new GameModel();
-        gameView = new GameView(gameModel, new HighTechBoardFormat());
+        mancalaComp = new GameView(gameModel, new HighTechFormat());
 
         final JPanel lowerPanel = new JPanel();
         JButton undo = new JButton("undo");
         undo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                gameModel.undoMove();
+                gameModel.undo();
             }
         });
 
@@ -44,7 +44,7 @@ public class Main extends JFrame{
 
         JButton submit = new JButton("Submit");
         String[] comboint = {"select", "3", "4"};
-        String[] comboformat = {"select", "High Tech Board", "Oak Board"};
+        String[] comboformat = {"select", "Steel Board", "Wood Board"};
         final JComboBox combo = new JComboBox(comboint);
         final JComboBox comboselectformat = new JComboBox(comboformat);
 
@@ -69,34 +69,34 @@ public class Main extends JFrame{
                 String comboformat = (String) comboselectformat.getSelectedItem();
                 combo.setEnabled(false);
                 comboselectformat.setEnabled(false);
-                if (comboint.equals("3") && comboformat.equals("High Tech Board")) {
+                if (comboint.equals("3") && comboformat.equals("Steel Board")) {
 
-                    gameModel.setMarbles(3);
-                    gameModel.setState("STARTED");
+                    model.setNumStones(3);
+                    model.setCurrState("STARTED");
                     BoardVisible = false;
                     setButtonVisible(false, selectionBoardPanel);
-                    gameView.setBoardFormat(new HighTechBoardFormat());
+                    mancalaComp.setBoard(new SteelRoundBoardFormatter());
                     setButtonVisible(true, lowerPanel);
-                } else if (comboint.equals("4") && comboformat.equals("High Tech Board")) {
-                    gameModel.setMarbles(4);
-                    gameModel.setState("STARTED");
+                } else if (comboint.equals("4") && comboformat.equals("Steel Board")) {
+                    model.setNumStones(4);
+                    model.setCurrState("STARTED");
                     BoardVisible = false;
                     setButtonVisible(false, selectionBoardPanel);
-                    gameView.setBoardFormat(new HighTechBoardFormat());
+                    mancalaComp.setBoard(new SteelRoundBoardFormatter());
                     setButtonVisible(true, lowerPanel);
-                } else if (comboint.equals("3") && comboformat.equals("Oak Board")) {
-                    gameModel.setMarbles(3);
-                    gameModel.setState("STARTED");
+                } else if (comboint.equals("3") && comboformat.equals("Wood Board")) {
+                    model.setNumStones(3);
+                    model.setCurrState("STARTED");
                     BoardVisible = false;
                     setButtonVisible(false, selectionBoardPanel);
-                    gameView.setBoardFormat(new OakBoardFormat());
+                    mancalaComp.setBoard(new WoodSquareBoardFormatter());
                     setButtonVisible(true, lowerPanel);
-                } else if (comboint.equals("4") && comboformat.equals("Oak Board")) {
-                    gameModel.setMarbles(4);
-                    gameModel.setState("STARTED");
+                } else if (comboint.equals("4") && comboformat.equals("Wood Board")) {
+                    model.setNumStones(4);
+                    model.setCurrState("STARTED");
                     BoardVisible = false;
                     setButtonVisible(false, selectionBoardPanel);
-                    gameView.setBoardFormat(new OakBoardFormat());
+                    mancalaComp.setBoard(new WoodSquareBoardFormatter());
                     setButtonVisible(true, lowerPanel);
 
                 }else{
@@ -112,7 +112,7 @@ public class Main extends JFrame{
         lowerPanel.add(undo);
         
         add(selectionBoardPanel, BorderLayout.NORTH);
-        add(gameView, BorderLayout.CENTER);
+        add(mancalaComp, BorderLayout.CENTER);
         add(lowerPanel, BorderLayout.SOUTH);
         setButtonVisible(false, lowerPanel);
   
@@ -125,12 +125,12 @@ public class Main extends JFrame{
      */
     public static void main(String[] args)
     {
-        Main main = new Main();  
+        MancalaMain mancala = new MancalaMain();  
         
-        main.setSize(800, 550);
-        main.setTitle("Mancala");
-        main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        main.setVisible(true);
+        mancala.setSize(800, 550);
+        mancala.setTitle("Mancala");
+        mancala.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mancala.setVisible(true);
         
     }
     
@@ -144,7 +144,6 @@ public class Main extends JFrame{
         p.setVisible(visible);
         //if both are false, start the Game.
         if (!BoardVisible) {
-            gameView.start();
+            mancalaComp.start();
         }
     }
-}

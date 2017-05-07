@@ -59,10 +59,9 @@ public class PitShape {
 
 			//draws the stones
 			Ellipse2D.Double marble = new Ellipse2D.Double(x, y + 25, MARBLE_SIZE, MARBLE_SIZE - 5);
-			g.setColor(Color.CYAN);
+			g.setColor(Color.ORANGE);
 			g.fill(marble);
-			g.setColor(Color.BLACK);
-			g.setStroke (new BasicStroke(2));
+			g.setColor(Color.BLUE);
 			g.draw(marble);
 			counter++;
 		}

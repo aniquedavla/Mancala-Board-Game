@@ -50,10 +50,10 @@ public class PitShape {
 			double x;
 			double y;
 			if (counter % 2 == 1) {
-				x = this.x + 30;
+				x = this.x + 31;
 				y = (this.y + 5) + 8 * counter / 1.5;
 			} else {
-				x = this.x + 15;
+				x = this.x + 14;
 				y = (this.y + 5) + 8 * counter / 1.5;
 			}
 
@@ -62,7 +62,6 @@ public class PitShape {
 			g.setColor(Color.CYAN);
 			g.fill(marble);
 			g.setColor(Color.BLACK);
-			g.setStroke (new BasicStroke(2));
 			g.draw(marble);
 			counter++;
 		}

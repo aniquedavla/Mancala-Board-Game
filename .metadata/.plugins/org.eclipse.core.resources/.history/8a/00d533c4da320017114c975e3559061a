@@ -1,8 +1,10 @@
 import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.geom.*;
 import javax.swing.*;
 import javax.swing.event.*;
+import java.net.*;
 
 public class GameView extends JComponent implements ChangeListener {
 
@@ -118,7 +120,6 @@ public class GameView extends JComponent implements ChangeListener {
         addPit(pit0);
         addPit(leftMancala);
 	}
-	
 	public void paintComponent(Graphics g) {
 
 		g.drawImage(boardFormat.backgroundImg(), 0, 0, this);
@@ -156,7 +157,6 @@ public class GameView extends JComponent implements ChangeListener {
 
 		this.setVisible(visibility);
 	}
-	
 	public void setBoardFormat(BoardFormat formatType) {
 
 		boardFormat = formatType;

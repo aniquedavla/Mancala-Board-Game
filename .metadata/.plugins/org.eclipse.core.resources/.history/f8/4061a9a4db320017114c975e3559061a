@@ -62,7 +62,6 @@ public class PitShape {
 			g.setColor(Color.CYAN);
 			g.fill(marble);
 			g.setColor(Color.BLACK);
-			g.setStroke (new BasicStroke(2));
 			g.draw(marble);
 			counter++;
 		}
