@@ -24,7 +24,7 @@ public class GameView extends JComponent implements ChangeListener {
 				MouseAdapter() {
 					public void mousePressed(MouseEvent m) {
 						for (int i = 0; i < pits.size(); i++) {
-							if (pits.get(i).contains(m.getPoint()) && gameModel.moveable()) {
+							if (pits.get(i).contains(m.getPoint()) && gameModel.canPlay(i)) {
 								gameModel.move(i);
 								return;
 							}
@@ -48,14 +48,21 @@ public class GameView extends JComponent implements ChangeListener {
 
        
 	}
-	
-	
-	
-	
+
 	
 	@Override
 	public void stateChanged(ChangeEvent e) {
-		
+		updateGame();
+
+		//stones from model
+		marbles = gameModel.getAllPits();
+
+		int sizeOfPit = pits.size();
+		//update the pits with the stones from the model
+		for(int i = 0; i < sizeOfPit; i++) {
+			pits.get(i).setMarbles(marbles[i]);
+		}
+		repaint();
 		
 	}
 
