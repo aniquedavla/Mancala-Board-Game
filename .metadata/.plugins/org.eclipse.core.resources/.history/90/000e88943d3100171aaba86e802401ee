@@ -1,0 +1,103 @@
+import java.awt.*;
+import java.awt.geom.*;
+
+public class PitShape {
+	private int x;
+	private int y;
+	private int width;
+	private int height;
+	private int numberOfMarbles;
+	private Shape shape;
+	final int MARBLE_SIZE = 20;
+
+	public PitShape(int x, int y, int width, int height) {
+		this.x = x;
+		this.y = y;
+		this.width = width;
+		this.height = height;
+	}
+
+	public void fill(Graphics2D g) {
+		g.setColor(Color.BLACK);
+		g.setStroke(new BasicStroke(10));
+		g.draw(shape);
+		g.setStroke(new BasicStroke(3));
+
+		//indicates the number of stones in a pit
+		if (numberOfMarbles > 0) {
+			g.setColor(Color.ORANGE);
+			Font font = new Font("Futura", Font.BOLD, 20);
+			g.setFont(font);
+			g.drawString(numberOfMarbles + "", x + 30, y + 20);
+		}
+
+		//determines placement of the stones in overlapping fashion
+		int counter = 1;
+		for (int i = 0; i < numberOfMarbles; i++) {
+			double x;
+			double y;
+			if (counter % 2 == 1) {
+				x = this.x + 30;
+				y = (this.y + 5) + 8 * counter / 1.5;
+			} else {
+				x = this.x + 15;
+				y = (this.y + 5) + 8 * counter / 1.5;
+			}
+
+			//draws the stones
+			Ellipse2D.Double marble = new Ellipse2D.Double(x, y + 25, MARBLE_SIZE, MARBLE_SIZE - 5);
+			g.setColor(Color.ORANGE);
+			g.fill(marble);
+			g.setColor(Color.BLUE);
+			g.draw(marble);
+			counter++;
+		}
+	}
+
+	public int getMarbles() {
+		return numberOfMarbles;
+	}
+
+	public void setMarbles(int amount) {
+		numberOfMarbles = amount;
+	}
+
+	public void setShape(Shape s) {
+		shape = s;
+	}
+
+	public Shape getShape() {
+		return shape;
+	}
+
+	public int getX() {
+		return x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public int getWidth() {
+		return width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+	
+	public boolean contains(Point2D p) {
+		if (shape.contains(p)) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public void draw (Graphics2D g)
+	{
+		g.draw(shape);
+		fill();
+	}
+}

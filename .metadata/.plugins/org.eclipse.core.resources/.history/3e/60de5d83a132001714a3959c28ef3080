@@ -1,0 +1,19 @@
+import java.awt.*;
+import java.awt.geom.*;
+import java.net.URL;
+
+public class HighTechFormat implements BoardFormat {
+
+	@Override
+	public Shape formatPitShape(PitShape ps) {
+		return new RoundRectangle2D.Double(ps.getX(), ps.getY(), ps.getWidth(), ps.getHeight(), 15, 15);
+	}
+
+	@Override
+	public Image backgroundImg() {
+		URL imgURL = this.getClass().getResource("/MancalaProject/board2.jpg");
+		Image img = Toolkit.getDefaultToolkit().getImage(imgURL);
+        return img;
+	}
+
+}
