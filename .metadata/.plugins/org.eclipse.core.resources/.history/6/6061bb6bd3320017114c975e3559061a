@@ -99,7 +99,7 @@ public class GameModel {
         }
     }
 
-    //moveable
+    //moveab
     public boolean canPlay(int pit) {
 
         //make sure play is not FINISHED
