@@ -55,19 +55,36 @@ public class GameModel {
 
     }
 
+    /**
+     *
+     * @return
+     */
     public int[] getAllPits() {
         return pits;
     }
 
+    /**
+     *
+     * @return
+     */
     public STATE getGameState() {
         return gameState;
     }
 
+    /**
+     *
+     * @return
+     */
     public Player getCurrentPlayer() {
         return currentPlayer;
     }
 
-    //getPP
+
+    /**
+     *
+     * @param pit
+     * @return
+     */
     private Player playerOfPit(int pit) {
 
         if (pit >= 0 && pit <= mancalaP1) {
@@ -100,6 +117,12 @@ public class GameModel {
     }
 
     //moveab
+
+    /**
+     *
+     * @param pit
+     * @return
+     */
     public boolean canPlay(int pit) {
 
         //make sure play is not FINISHED
