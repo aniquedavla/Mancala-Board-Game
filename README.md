@@ -1,5 +1,5 @@
 # Mancala-Board-Game
-*MVC, Java Swing based game*
+##*MVC, Java Swing based game*
 
 
 
