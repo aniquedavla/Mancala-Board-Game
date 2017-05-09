@@ -1,4 +1,9 @@
 # Mancala-Board-Game
+*MVC, Java Swing based game*
+
+
+
+
 Mancala game for CS151 project.
 ### General Workflow 
 
