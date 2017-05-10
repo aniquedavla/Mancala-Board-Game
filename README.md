@@ -4,12 +4,12 @@
 Rules of the game: https://www.cs.sjsu.edu/~kim/cs151/contents/project/mancala.html
 
 ### RUN 
-*Open in an IDE and run Main.java <br>
+* Open in an IDE and run Main.java * <br>
 OR <br>
-*Open in Terminal 
->cd MancalaProject/src
->javac *
->java Main.java
+* Open in Terminal *
+> cd MancalaProject/src
+> javac *
+> java Main.java
 
 ##### EnjoY!
 
