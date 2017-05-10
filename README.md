@@ -1,5 +1,5 @@
 # Mancala-Board-Game
-#Java Swing based game using MVC and Strategy Design pattern
+# Java Swing based game using MVC and Strategy Design pattern
 
 Rules of the game: https://www.cs.sjsu.edu/~kim/cs151/contents/project/mancala.html
 
